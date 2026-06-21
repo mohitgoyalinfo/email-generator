@@ -1,0 +1,280 @@
+:root {
+  color-scheme: light;
+  --bg-1: #0f172a;
+  --bg-2: #1e293b;
+  --card: rgba(15, 23, 42, 0.72);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-2: #22c55e;
+  --surface: rgba(255, 255, 255, 0.08);
+  --shadow: 0 24px 80px rgba(155, 169, 229, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgb(62, 73, 69), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(54, 69, 60, 0.87), transparent 28%),
+    linear-gradient(135deg, var(--bg-1), var(--bg-2));
+  /* background-color: ; */
+  color: var(--text);
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(12px, 2vw, 24px);
+}
+
+.App {
+  width: min(880px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.6vw, 18px);
+  padding: clamp(16px, 2.4vw, 32px);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.68));
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.App h1 {
+  margin: 0 0 4px;
+  font-size: clamp(1.6rem, 2.6vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.App > label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+#firstName,
+#lastName {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.55);
+  color: var(--text);
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+#firstName::placeholder,
+#lastName::placeholder {
+  color: rgba(226, 232, 240, 0.45);
+}
+
+#firstName:focus,
+#lastName:focus {
+  border-color: rgba(56, 189, 248, 0.7);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.14);
+  transform: translateY(-1px);
+}
+
+.email-provider {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.email-provider label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.email-provider input[type="radio"] {
+  accent-color: var(--accent);
+  transform: translateY(1px);
+}
+
+.App > button {
+  align-self: flex-start;
+}
+
+.generateButton,
+#copyButton {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+
+.generateButton:hover,
+#copyButton:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.generateButton:active,
+#copyButton:active {
+  transform: translateY(0);
+}
+
+.generateButton {
+  background: linear-gradient(135deg, var(--accent-2), #16a34a);
+  box-shadow: 0 12px 24px rgba(34, 197, 94, 0.24);
+}
+
+#resetButton {
+  background: linear-gradient(135deg, #64748b, #475569);
+  box-shadow: 0 12px 24px rgba(71, 85, 105, 0.24);
+}
+
+#copyButton {
+  background: linear-gradient(135deg, var(--accent), #2563eb);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.24);
+}
+
+.email-list {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 20px;
+  background: rgba(2, 6, 23, 0.34);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.65) transparent;
+}
+
+.email-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.email-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.email-list::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 999px;
+}
+
+.email-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.2);
+}
+
+.email-container span {
+  word-break: break-word;
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.email-container #copyButton {
+  flex-shrink: 0;
+}
+
+.digit-count {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 640px) {
+  #root {
+    padding: 10px;
+  }
+
+  .App {
+    width: min(100%, calc(100vw - 20px));
+    max-height: calc(100dvh - 20px);
+    padding: 14px;
+    border-radius: 22px;
+    gap: 10px;
+  }
+
+  .App h1 {
+    font-size: 1.45rem;
+  }
+
+  .email-provider,
+  .digit-count {
+    padding: 10px 12px;
+  }
+
+  #firstName,
+  #lastName,
+  .generateButton,
+  #copyButton {
+    padding: 10px 12px;
+  }
+
+  .email-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .email-container #copyButton,
+  .App > button {
+    width: 100%;
+  }
+}
+
+@media (max-height: 760px) {
+  .App {
+    gap: 8px;
+    padding: 14px;
+  }
+
+  .App h1 {
+    font-size: 1.45rem;
+    margin-bottom: 0;
+  }
+
+  .email-list {
+    gap: 10px;
+    padding: 10px;
+  }
+}
